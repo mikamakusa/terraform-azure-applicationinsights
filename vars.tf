@@ -224,13 +224,7 @@ variable "workbook_template" {
 }
 
 variable "storage_account" {
-  type = list(object({
-    id                       = number
-    account_replication_type = string
-    account_tier             = string
-    name                     = string
-    resource_group_id        = number
-  }))
+  type = any
   default = []
 }
 
@@ -245,10 +239,6 @@ variable "storage_container_name" {
 }
 
 variable "storage_container" {
-  type = list(object({
-    id                 = number
-    name               = string
-    storage_account_id = number
-  }))
+  type = any
   default = []
 }

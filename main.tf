@@ -146,7 +146,7 @@ resource "azurerm_application_insights_workbook" "this" {
   category    = lookup(var.workbook[count.index], "category")
   description = lookup(var.workbook[count.index], "description")
   storage_container_id = var.storage_container_name == null ? try(
-    element(azurerm_storage_container.this.*.id, lookup(var.workbook[count.index], "sotrage_container_id"))
+    element(module.storage.*.container_id, lookup(var.workbook[count.index], "sotrage_container_id"))
   ) : data.azurerm_storage_container.this.id
   tags = merge(var.tags, lookup(var.workbook[count.index], "tags"))
 
